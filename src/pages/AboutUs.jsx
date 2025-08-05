@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
 import TeamMemberModal from "../components/TeamMemberModal";
 import axios from "axios";
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 const AboutUs = () => {
   const location = useLocation();

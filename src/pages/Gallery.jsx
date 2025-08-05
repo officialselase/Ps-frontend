@@ -5,7 +5,7 @@ import { Lightbox } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Link } from "react-router-dom"; // NEW: Import Link
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal"; // NEW: Import NewsletterSubscriptionModal
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 // Simple Skeleton Loader component
 const GalleryItemSkeleton = () => (

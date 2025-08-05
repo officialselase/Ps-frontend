@@ -1,7 +1,7 @@
 // src/components/NewsletterSubscriptionModal.jsx
 import React, { useState } from "react";
 import axios from "axios";
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 const NewsletterSubscriptionModal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");

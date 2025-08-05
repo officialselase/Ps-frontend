@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom"; // NEW: useLocation
 import axios from "axios";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);

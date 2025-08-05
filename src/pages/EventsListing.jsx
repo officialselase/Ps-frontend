@@ -4,7 +4,7 @@ import axios from "axios";
 import EventDetailModal from "../components/EventDetailModal";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal"; // NEW: Import NewsletterSubscriptionModal
 import { Link } from "react-router-dom"; // NEW: Import Link for CTA buttons
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 const EventsListing = () => {
   const [events, setEvents] = useState([]);

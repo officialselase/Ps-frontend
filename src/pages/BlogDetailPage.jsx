@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 const BlogDetailPage = () => {
   const { slug } = useParams(); // Get the slug from the URL

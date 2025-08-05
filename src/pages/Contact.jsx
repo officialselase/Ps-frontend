@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom"; // NEW: Import useLocation
 import { Mail, Phone, MapPin } from "lucide-react";
 import axios from "axios";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal"; // NEW: Import Newsletter Modal
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 const Contact = () => {
   const location = useLocation(); // NEW: Hook to get current URL information

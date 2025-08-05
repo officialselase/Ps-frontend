@@ -2,7 +2,7 @@
 import React from "react";
 import { X } from "lucide-react";
 import DOMPurify from "dompurify"; // ADDED: Import DOMPurify
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 const EventDetailModal = ({ event, onClose }) => {
   if (!event) return null;

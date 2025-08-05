@@ -8,7 +8,7 @@ import axios from "axios";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
 // NEW: Import EventDetailModal for event pop-ups
 import EventDetailModal from "../components/EventDetailModal";
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 const Homepage = () => {
   const [activeSection, setActiveSection] = useState(0);

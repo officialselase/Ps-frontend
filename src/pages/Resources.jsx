@@ -5,7 +5,7 @@ import { Download, FileText } from "lucide-react"; // For icons
 // NEW: Import NewsletterSubscriptionModal and Link
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
 import { Link } from "react-router-dom";
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL } from "./../constants";
 
 const Resources = () => {
   const [resources, setResources] = useState([]);
@@ -17,9 +17,7 @@ const Resources = () => {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await axios.get(
-          `${BASE_API_URL}/api/resources/`
-        );
+        const response = await axios.get(`${BASE_API_URL}/api/resources/`);
         // Corrected filter: now uses 'is_public' as per your Django serializer
         setResources(response.data.filter((res) => res.is_public));
       } catch (err) {
