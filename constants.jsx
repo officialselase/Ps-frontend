@@ -1,3 +1,1 @@
-// src/constants.js
-
-export const BASE_API_URL = "http://cgk00wgc44k08s4wgssw8k0w.31.97.156.207.sslip.io";
+export const BASE_API_URL = import.meta.env.VITE_API_BASE_URL;
