@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom"; // NEW: Import useLocation
 import { Mail, Phone, MapPin } from "lucide-react";
 import axios from "axios";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal"; // NEW: Import Newsletter Modal
+import { BASE_API_URL } from "./constants";
 
 const Contact = () => {
   const location = useLocation(); // NEW: Hook to get current URL information
@@ -101,7 +102,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/contact/", // Your Django backend API endpoint for general contact
+        `${BASE_API_URL}/api/contact/`, // Your Django backend API endpoint for general contact
         formData
       );
 
@@ -141,7 +142,7 @@ const Contact = () => {
     try {
       // You might need a separate endpoint for volunteer applications
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/volunteer/", // Placeholder: Create this endpoint in Django
+        `${BASE_API_URL}/api/volunteer/`, // Placeholder: Create this endpoint in Django
         volunteerFormData
       );
       console.log("Volunteer application successful:", response.data);
@@ -177,7 +178,7 @@ const Contact = () => {
     try {
       // You might need a separate endpoint for partner applications
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/partner/", // Placeholder: Create this endpoint in Django
+        `${BASE_API_URL}/api/partner/`, // Placeholder: Create this endpoint in Django
         partnerFormData
       );
       console.log("Partnership inquiry successful:", response.data);

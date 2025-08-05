@@ -5,6 +5,7 @@ import { Lightbox } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Link } from "react-router-dom"; // NEW: Import Link
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal"; // NEW: Import NewsletterSubscriptionModal
+import { BASE_API_URL } from "./constants";
 
 // Simple Skeleton Loader component
 const GalleryItemSkeleton = () => (
@@ -37,9 +38,7 @@ const Gallery = () => {
     // Fetch categories first
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/categories/"
-        );
+        const response = await axios.get(`${BASE_API_URL}/api/categories/`);
         setCategories(response.data);
       } catch (err) {
         console.error("Error fetching categories:", err);
@@ -53,9 +52,7 @@ const Gallery = () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/gallery-items/"
-        );
+        const response = await axios.get(`${BASE_API_URL}/api/gallery-items/`);
         setGalleryItems(response.data.filter((item) => item.is_published)); // Filter for published items
       } catch (err) {
         console.error("Error fetching gallery items:", err);
@@ -97,7 +94,7 @@ const Gallery = () => {
   const slides = useMemo(
     () =>
       filteredAndSortedItems.map((item) => ({
-        src: `http://127.0.0.1:8000${item.image}`,
+        src: `${BASE_API_URL}${item.image}`,
         alt: item.title || item.description || "Gallery image",
         title: item.title, // Pass title for caption
         description: item.description, // Pass description for caption
@@ -246,7 +243,7 @@ const Gallery = () => {
                             slides.findIndex(
                               (slide) =>
                                 slide.src ===
-                                `http://127.0.0.1:8000${item.image}`
+                                `${BASE_API_URL}${item.image}`
                             )
                           )
                         }
@@ -254,7 +251,7 @@ const Gallery = () => {
                         {item.image && (
                           <div className="w-full h-64 overflow-hidden">
                             <img
-                              src={`http://127.0.0.1:8000${item.image}`}
+                              src={`${BASE_API_URL}${item.image}`}
                               alt={
                                 item.title ||
                                 item.description ||
@@ -288,7 +285,7 @@ const Gallery = () => {
                       openLightboxWith(
                         slides.findIndex(
                           (slide) =>
-                            slide.src === `http://127.0.0.1:8000${item.image}`
+                            slide.src === `${BASE_API_URL}${item.image}`
                         )
                       )
                     }
@@ -296,7 +293,7 @@ const Gallery = () => {
                     {item.image && (
                       <div className="w-full h-64 overflow-hidden">
                         <img
-                          src={`http://127.0.0.1:8000${item.image}`}
+                          src={`${BASE_API_URL}${item.image}`}
                           alt={
                             item.title || item.description || "Gallery image"
                           } // Robust alt text

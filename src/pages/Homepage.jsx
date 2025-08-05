@@ -8,6 +8,7 @@ import axios from "axios";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
 // NEW: Import EventDetailModal for event pop-ups
 import EventDetailModal from "../components/EventDetailModal";
+import { BASE_API_URL } from "./constants";
 
 const Homepage = () => {
   const [activeSection, setActiveSection] = useState(0);
@@ -58,7 +59,7 @@ const Homepage = () => {
     const fetchBlogPosts = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/blogposts/?limit=3"
+          `${BASE_API_URL}/api/blogposts/?limit=3`
         );
         const posts = response.data.results || response.data;
         const sortedPosts = posts.sort(
@@ -78,7 +79,7 @@ const Homepage = () => {
     const fetchEvents = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/events/?limit=3"
+          `${BASE_API_URL}/api/events/?limit=3`
         );
         const fetchedEvents = response.data.results || response.data;
         const sortedEvents = fetchedEvents.sort(
@@ -359,7 +360,7 @@ const Homepage = () => {
               >
                 {post.image && (
                   <img
-                    src={`http://127.0.0.1:8000${post.image}`} // Corrected image path for Django media
+                    src={`${BASE_API_URL}${post.image}`} // Corrected image path for Django media
                     alt={post.title}
                     className="w-full h-48 object-cover"
                   />
@@ -416,7 +417,7 @@ const Homepage = () => {
               >
                 {event.image && (
                   <img
-                    src={`http://127.0.0.1:8000${event.image}`} // Corrected image path for Django media
+                    src={`${BASE_API_URL}${event.image}`} // Corrected image path for Django media
                     alt={event.title}
                     className="w-full h-48 object-cover"
                   />

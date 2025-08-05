@@ -2,6 +2,7 @@
 import React from "react";
 import { X } from "lucide-react";
 import DOMPurify from "dompurify"; // ADDED: Import DOMPurify
+import { BASE_API_URL } from "./constants";
 
 const EventDetailModal = ({ event, onClose }) => {
   if (!event) return null;
@@ -25,7 +26,7 @@ const EventDetailModal = ({ event, onClose }) => {
         {event.image && (
           <div className="w-full h-64 overflow-hidden rounded-t-lg">
             <img
-              src={`http://127.0.0.1:8000${event.image}`}
+              src={`${BASE_API_URL}${event.image}`} // UPDATED: Use base_url for image path
               alt={event.title}
               className="w-full h-full object-cover"
             />

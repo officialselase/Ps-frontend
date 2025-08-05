@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import { BASE_API_URL } from "./constants";
 
 const BlogDetailPage = () => {
   const { slug } = useParams(); // Get the slug from the URL
@@ -13,7 +14,7 @@ const BlogDetailPage = () => {
     const fetchBlogPost = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/blogposts/${slug}/`
+          `${BASE_API_URL}/api/blogposts/${slug}/`
         );
         setBlogPost(response.data);
       } catch (err) {
@@ -100,7 +101,7 @@ const BlogDetailPage = () => {
         {blogPost.image && (
           <div className="mb-8 overflow-hidden rounded-lg shadow-xl">
             <img
-              src={`http://127.0.0.1:8000${blogPost.image}`}
+              src={`${BASE_API_URL}${blogPost.image}`}
               alt={blogPost.title}
               className="w-full h-auto object-cover max-h-96"
             />

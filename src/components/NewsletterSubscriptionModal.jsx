@@ -1,10 +1,11 @@
 // src/components/NewsletterSubscriptionModal.jsx
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { BASE_API_URL } from "./constants";
 
 const NewsletterSubscriptionModal = ({ isOpen, onClose }) => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState(''); // To display success or error messages
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState(""); // To display success or error messages
   const [isSubmitting, setIsSubmitting] = useState(false); // To prevent multiple submissions
 
   // Configure Axios to include CSRF token for Django
@@ -17,31 +18,36 @@ const NewsletterSubscriptionModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage(''); // Clear previous messages
+    setMessage(""); // Clear previous messages
     setIsSubmitting(true);
 
     if (!email) {
-      setMessage('Please enter your email address.');
+      setMessage("Please enter your email address.");
       setIsSubmitting(false);
       return;
     }
 
     try {
       // Assuming your backend expects a JSON object with an 'email' field
-      const response = await axios.post('http://127.0.0.1:8000/api/subscribe/', { email });
-      console.log('Subscription successful:', response.data);
-      setMessage('Thank you for subscribing!');
-      setEmail(''); // Clear the email input
+      const response = await axios.post(`${BASE_API_URL}/api/subscribe/`, {
+        email,
+      });
+      console.log("Subscription successful:", response.data);
+      setMessage("Thank you for subscribing!");
+      setEmail(""); // Clear the email input
       setTimeout(() => {
         onClose(); // Close modal after a short delay
-        setMessage(''); // Clear message after modal closes
+        setMessage(""); // Clear message after modal closes
       }, 2000);
     } catch (error) {
-      console.error('Subscription error:', error.response ? error.response.data : error.message);
+      console.error(
+        "Subscription error:",
+        error.response ? error.response.data : error.message
+      );
       if (error.response && error.response.data && error.response.data.email) {
         setMessage(`Error: ${error.response.data.email[0]}`); // Display specific email error
       } else {
-        setMessage('Failed to subscribe. Please try again.');
+        setMessage("Failed to subscribe. Please try again.");
       }
     } finally {
       setIsSubmitting(false);
@@ -83,7 +89,13 @@ const NewsletterSubscriptionModal = ({ isOpen, onClose }) => {
             />
           </div>
           {message && (
-            <p className={`text-center text-sm ${message.includes('Error') || message.includes('Failed') ? 'text-red-600' : 'text-green-600'}`}>
+            <p
+              className={`text-center text-sm ${
+                message.includes("Error") || message.includes("Failed")
+                  ? "text-red-600"
+                  : "text-green-600"
+              }`}
+            >
               {message}
             </p>
           )}
@@ -92,7 +104,7 @@ const NewsletterSubscriptionModal = ({ isOpen, onClose }) => {
             className="bg-gold-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-gold-600 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+            {isSubmitting ? "Subscribing..." : "Subscribe"}
           </button>
         </form>
       </div>

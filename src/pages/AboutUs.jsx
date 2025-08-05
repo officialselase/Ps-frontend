@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
 import TeamMemberModal from "../components/TeamMemberModal";
 import axios from "axios";
+import { BASE_API_URL } from "./constants";
 
 const AboutUs = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const AboutUs = () => {
   const [isTeamMemberModalOpen, setIsTeamMemberModalOpen] = useState(false);
   const [selectedTeamMember, setSelectedTeamMember] = useState(null);
 
-  const API_BASE_URL = "http://127.0.0.1:8000/api/";
+  const API_BASE_URL = `${BASE_API_URL}/api/`; // Use the BASE_API_URL from constants
 
   useEffect(() => {
     const fetchTeamMembers = async () => {

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom"; // NEW: useLocation
 import axios from "axios";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
+import { BASE_API_URL } from "./constants";
 
 const Blogs = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -18,9 +19,7 @@ const Blogs = () => {
     // Fetch categories
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/categories/"
-        );
+        const response = await axios.get(`${BASE_API_URL}/api/categories/`);
         setCategories(response.data);
       } catch (err) {
         console.error("Error fetching categories:", err);
@@ -42,7 +41,7 @@ const Blogs = () => {
         setSearchTerm(currentSearch);
         setSelectedCategory(currentCategory);
 
-        let apiUrl = "http://127.0.0.1:8000/api/blogposts/";
+        let apiUrl = `${BASE_API_URL}/api/blogposts/`;
         const queryParams = [];
 
         if (currentSearch) {
@@ -179,7 +178,7 @@ const Blogs = () => {
                     {post.image && (
                       <div className="h-56 w-full overflow-hidden">
                         <img
-                          src={`http://127.0.0.1:8000${post.image}`}
+                          src={`${BASE_API_URL}${post.image}`}
                           alt={post.title}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
@@ -269,4 +268,3 @@ const Blogs = () => {
 };
 
 export default Blogs;
-

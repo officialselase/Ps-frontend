@@ -4,6 +4,7 @@ import axios from "axios";
 import EventDetailModal from "../components/EventDetailModal";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal"; // NEW: Import NewsletterSubscriptionModal
 import { Link } from "react-router-dom"; // NEW: Import Link for CTA buttons
+import { BASE_API_URL } from "./constants";
 
 const EventsListing = () => {
   const [events, setEvents] = useState([]);
@@ -17,7 +18,7 @@ const EventsListing = () => {
   useEffect(() => {
     const fetchAllEvents = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/events/");
+        const response = await axios.get(`${BASE_API_URL}/api/events/`);
         // Ensure events are sorted by date if not already done by backend
         const sortedEvents = response.data.sort(
           (a, b) => new Date(a.event_date) - new Date(b.event_date)
@@ -86,7 +87,7 @@ const EventsListing = () => {
                   {event.image && (
                     <div className="w-full h-48 overflow-hidden">
                       <img
-                        src={`http://127.0.0.1:8000${event.image}`}
+                        src={`${BASE_API_URL}${event.image}`}
                         alt={event.title}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />

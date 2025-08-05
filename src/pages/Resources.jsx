@@ -5,6 +5,7 @@ import { Download, FileText } from "lucide-react"; // For icons
 // NEW: Import NewsletterSubscriptionModal and Link
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
 import { Link } from "react-router-dom";
+import { BASE_API_URL } from "./constants";
 
 const Resources = () => {
   const [resources, setResources] = useState([]);
@@ -17,7 +18,7 @@ const Resources = () => {
     const fetchResources = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/resources/"
+          `${BASE_API_URL}/api/resources/`
         );
         // Corrected filter: now uses 'is_public' as per your Django serializer
         setResources(response.data.filter((res) => res.is_public));
@@ -68,7 +69,7 @@ const Resources = () => {
               {resources.map((resource) => (
                 <a
                   key={resource.id}
-                  href={`http://127.0.0.1:8000${resource.file}`} // Assuming 'file' field holds the path to the downloadable file
+                  href={`${BASE_API_URL}${resource.file}`} // Assuming 'file' field holds the path to the downloadable file
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 group"
