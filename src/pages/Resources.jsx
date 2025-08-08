@@ -1,24 +1,47 @@
 // src/pages/Resources.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Download, FileText } from "lucide-react"; // For icons
-// NEW: Import NewsletterSubscriptionModal and Link
+import { Download, FileText, FileImage, FileArchive, File } from "lucide-react";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
 import { Link } from "react-router-dom";
 import { BASE_API_URL } from "./../constants";
+
+// Helper: Pick icon based on file extension
+const getFileIcon = (filename) => {
+  if (!filename) return <FileText size={24} className="text-teal-700" />;
+  const ext = filename.split(".").pop().toLowerCase();
+  switch (ext) {
+    case "pdf":
+      return <FileText size={24} className="text-red-600" />;
+    case "doc":
+    case "docx":
+      return <FileText size={24} className="text-blue-600" />; // Fallback to FileText
+    case "xls":
+    case "xlsx":
+      return <FileText size={24} className="text-green-600" />; // Fallback to FileText
+    case "jpg":
+    case "jpeg":
+    case "png":
+    case "gif":
+      return <FileImage size={24} className="text-purple-600" />;
+    case "zip":
+    case "rar":
+      return <FileArchive size={24} className="text-yellow-600" />;
+    default:
+      return <File size={24} className="text-teal-700" />;
+  }
+};
 
 const Resources = () => {
   const [resources, setResources] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // NEW: State for controlling the newsletter modal visibility
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchResources = async () => {
       try {
         const response = await axios.get(`${BASE_API_URL}/api/resources/`);
-        // Corrected filter: now uses 'is_public' as per your Django serializer
         setResources(response.data.filter((res) => res.is_public));
       } catch (err) {
         console.error("Error fetching resources:", err);
@@ -67,16 +90,21 @@ const Resources = () => {
               {resources.map((resource) => (
                 <a
                   key={resource.id}
-                  href={`${BASE_API_URL}${resource.file}`} // Assuming 'file' field holds the path to the downloadable file
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={resource.file ? `${BASE_API_URL}${resource.file}` : "#"}
+                  target={resource.file ? "_blank" : undefined}
+                  rel={resource.file ? "noopener noreferrer" : undefined}
+                  onClick={(e) => {
+                    if (!resource.file) {
+                      e.preventDefault();
+                      alert("Sorry, this file is not available at the moment.");
+                    }
+                  }}
                   className="flex items-center justify-between bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 group"
-                  aria-label={`Download ${resource.title}`} // Accessibility
+                  aria-label={`Download ${resource.title}`}
                 >
                   <div className="flex items-center space-x-4">
                     <div className="p-3 rounded-full bg-teal-100 group-hover:bg-teal-200 transition-colors">
-                      {/* Icon based on file type could be an enhancement */}
-                      <FileText size={24} className="text-teal-700" />
+                      {getFileIcon(resource.file)}
                     </div>
                     <div>
                       <h2 className="text-xl font-semibold text-teal-800 group-hover:text-[#FFD700] transition-colors">
@@ -104,8 +132,7 @@ const Resources = () => {
         </div>
       </section>
 
-      {/* Consistent Call to Action Section */}
-      {/* ... (Your existing CTA section remains unchanged here) ... */}
+      {/* CTA Section */}
       <section
         className="relative py-20 bg-cover bg-center"
         style={{

@@ -18,7 +18,7 @@ const AboutUs = () => {
   const [isTeamMemberModalOpen, setIsTeamMemberModalOpen] = useState(false);
   const [selectedTeamMember, setSelectedTeamMember] = useState(null);
 
-  const API_BASE_URL = `${BASE_API_URL}/api/`; // Use the BASE_API_URL from constants
+  const API_BASE_URL = `${BASE_API_URL.replace(/\/$/, "")}/api/`; // prevent accidental "//"
 
   useEffect(() => {
     const fetchTeamMembers = async () => {
@@ -269,10 +269,15 @@ const AboutUs = () => {
                   onClick={() => openTeamMemberModal(member)} // NEW: Click handler
                 >
                   <img
-                    src={member.profile_picture || "/placeholder-avatar.jpg"}
-                    alt={member.name}
-                    className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-white shadow-md"
-                  />
+    src={
+    member.profile_picture
+      ? `${BASE_API_URL}${member.profile_picture}`
+      : "/placeholder-avatar.jpg"
+  }
+  alt={member.name}
+  className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-white shadow-md"
+/>
+
                   <h3 className="text-xl font-semibold text-teal-800 mb-1">
                     {member.name}
                   </h3>

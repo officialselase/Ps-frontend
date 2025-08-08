@@ -1,33 +1,32 @@
-// src/pages/Blogs.jsx
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom"; // NEW: useLocation
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import NewsletterSubscriptionModal from "../components/NewsletterSubscriptionModal";
 import { BASE_API_URL } from "./../constants";
 
 const Blogs = () => {
+  const API_ROOT = BASE_API_URL.replace(/\/$/, "");
+
   const [blogPosts, setBlogPosts] = useState([]);
-  const [categories, setCategories] = useState([]); // NEW: for categories
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(""); // NEW: for search input
-  const [selectedCategory, setSelectedCategory] = useState(""); // NEW: for category filter
-  const location = useLocation(); // NEW: to read URL params
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const location = useLocation();
 
   useEffect(() => {
-    // Fetch categories
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${BASE_API_URL}/api/categories/`);
+        const response = await axios.get(`${API_ROOT}/api/categories/`);
         setCategories(response.data);
       } catch (err) {
         console.error("Error fetching categories:", err);
-        // Don't block page if categories fail
       }
     };
     fetchCategories();
-  }, []);
+  }, [API_ROOT]);
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
@@ -41,17 +40,14 @@ const Blogs = () => {
         setSearchTerm(currentSearch);
         setSelectedCategory(currentCategory);
 
-        let apiUrl = `${BASE_API_URL}/api/blogposts/`;
+        let apiUrl = `${API_ROOT}/api/blogposts/`;
         const queryParams = [];
 
-        if (currentSearch) {
-          queryParams.push(`search=${currentSearch}`);
-        }
-        if (currentCategory) {
-          queryParams.push(`category__slug=${currentCategory}`); // Django-filter expects category__slug
-        }
+        if (currentSearch) queryParams.push(`search=${currentSearch}`);
+        if (currentCategory)
+          queryParams.push(`category__slug=${currentCategory}`);
 
-        if (queryParams.length > 0) {
+        if (queryParams.length) {
           apiUrl += `?${queryParams.join("&")}`;
         }
 
@@ -65,18 +61,14 @@ const Blogs = () => {
       }
     };
     fetchBlogPosts();
-  }, [location.search]); // Re-fetch when URL search params change
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  }, [location.search, API_ROOT]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     const params = new URLSearchParams();
     if (searchTerm) params.set("search", searchTerm);
     if (selectedCategory) params.set("category", selectedCategory);
-    window.history.pushState({}, "", `/news?${params.toString()}`); // Update URL without full reload
+    window.history.pushState({}, "", `/news?${params.toString()}`);
   };
 
   const handleCategoryChange = (e) => {
@@ -88,17 +80,15 @@ const Blogs = () => {
     window.history.pushState({}, "", `/news?${params.toString()}`);
   };
 
-  // ... (loading and error states remain the same) ...
-
   return (
     <div className="min-h-screen bg-teal-50 text-teal-800">
-      {/* Blog Page Hero/Banner Section */}
+      {/* Hero */}
       <section className="relative h-72 md:h-80 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/bg1.jpg')" }}
         ></div>
-        <div className="absolute inset-0 bg-teal-900/60 via-teal-800/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-teal-900/60"></div>
         <div className="relative z-10 h-full flex items-center justify-center text-white text-center px-4">
           <div className="max-w-4xl space-y-4">
             <h1 className="text-4xl md:text-6xl font-light">
@@ -112,14 +102,14 @@ const Blogs = () => {
         </div>
       </section>
 
-      {/* Main Blog Posts Section */}
+      {/* Main */}
       <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-light text-center text-teal-800 mb-12">
             Explore All Articles
           </h2>
 
-          {/* Search and Filter Section */}
+          {/* Search & Filter */}
           <div className="mb-10 flex flex-col md:flex-row justify-between items-center gap-6">
             <form
               onSubmit={handleSearchSubmit}
@@ -130,7 +120,7 @@ const Blogs = () => {
                   type="text"
                   placeholder="Search blog posts..."
                   value={searchTerm}
-                  onChange={handleSearchChange}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 rounded-full border-2 border-teal-200 focus:outline-none focus:border-[#ffd700] transition-colors text-teal-800 bg-teal-50"
                 />
                 <svg
@@ -138,7 +128,6 @@ const Blogs = () => {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
                     strokeLinecap="round"
@@ -166,7 +155,20 @@ const Blogs = () => {
             </div>
           </div>
 
-          {blogPosts.length > 0 ? (
+          {/* Loading */}
+          {loading && (
+            <p className="text-center text-lg text-teal-700">
+              Loading blog posts...
+            </p>
+          )}
+
+          {/* Error */}
+          {error && !loading && (
+            <p className="text-center text-lg text-red-600">{error}</p>
+          )}
+
+          {/* Posts */}
+          {!loading && !error && blogPosts.length > 0 && (
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {blogPosts.map((post) => (
                 <Link
@@ -175,17 +177,19 @@ const Blogs = () => {
                   className="block group"
                 >
                   <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    {post.image && (
-                      <div className="h-56 w-full overflow-hidden">
-                        <img
-                          src={`${BASE_API_URL}${post.image}`}
-                          alt={post.title}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                    )}
+                    <div className="h-56 w-full overflow-hidden">
+                      <img
+                        src={
+                          post.image
+                            ? `${API_ROOT}${post.image}`
+                            : "/placeholder-blog.jpg"
+                        }
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
                     <div className="p-6 flex flex-col flex-grow">
-                      {post.category && ( // Display category if available
+                      {post.category && (
                         <p className="text-[#ffd700] text-sm font-semibold mb-2 uppercase">
                           {post.category.name}
                         </p>
@@ -210,7 +214,9 @@ const Blogs = () => {
                 </Link>
               ))}
             </div>
-          ) : (
+          )}
+
+          {!loading && !error && blogPosts.length === 0 && (
             <p className="text-center text-xl text-teal-700">
               No blog posts to display yet.
             </p>
@@ -218,15 +224,12 @@ const Blogs = () => {
         </div>
       </section>
 
-      {/* Consistent Call to Action Section */}
-      {/* ... (Your existing CTA section remains unchanged here) ... */}
+      {/* CTA */}
       <section
         className="relative py-20 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/secbg2.webp')",
-        }}
+        style={{ backgroundImage: "url('/secbg2.webp')" }}
       >
-        <div className="absolute inset-0 bg-teal-800/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-teal-800/80"></div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-white text-center">
           <h2 className="text-4xl md:text-5xl font-light mb-6">
             Join Our Mission: How You Can Help
