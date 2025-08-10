@@ -243,7 +243,7 @@ const Gallery = () => {
                             slides.findIndex(
                               (slide) =>
                                 slide.src ===
-                                `${BASE_API_URL}${item.image}`
+                                `${item.image}`
                             )
                           )
                         }
@@ -251,7 +251,7 @@ const Gallery = () => {
                         {item.image && (
                           <div className="w-full h-64 overflow-hidden">
                             <img
-                              src={`${BASE_API_URL}${item.image}`}
+                              src={`${item.image}`}
                               alt={
                                 item.title ||
                                 item.description ||
@@ -285,7 +285,7 @@ const Gallery = () => {
                       openLightboxWith(
                         slides.findIndex(
                           (slide) =>
-                            slide.src === `${BASE_API_URL}${item.image}`
+                            slide.src === `${item.image}`
                         )
                       )
                     }
@@ -293,7 +293,7 @@ const Gallery = () => {
                     {item.image && (
                       <div className="w-full h-64 overflow-hidden">
                         <img
-                          src={`${BASE_API_URL}${item.image}`}
+                          src={`${item.image}`}
                           alt={
                             item.title || item.description || "Gallery image"
                           } // Robust alt text
