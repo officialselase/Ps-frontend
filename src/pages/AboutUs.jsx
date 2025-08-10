@@ -271,7 +271,7 @@ const AboutUs = () => {
                   <img
     src={
     member.profile_picture
-      ? `${BASE_API_URL}${member.profile_picture}`
+      ? `${member.profile_picture}`
       : "/placeholder-avatar.jpg"
   }
   alt={member.name}

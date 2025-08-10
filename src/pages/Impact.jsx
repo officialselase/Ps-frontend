@@ -137,7 +137,7 @@ const Impact = () => {
               >
                 {stat.icon && (
                   <img
-                    src={`${BASE_API_URL}${stat.icon}`}
+                    src={`${stat.icon}`}
                     alt={stat.title}
                     className="w-12 h-12 mb-3 object-contain"
                   />

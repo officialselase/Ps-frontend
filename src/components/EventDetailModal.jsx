@@ -26,7 +26,7 @@ const EventDetailModal = ({ event, onClose }) => {
         {event.image && (
           <div className="w-full h-64 overflow-hidden rounded-t-lg">
             <img
-              src={`${BASE_API_URL}${event.image}`} // UPDATED: Use base_url for image path
+              src={`${event.image}`} // UPDATED: Use base_url for image path
               alt={event.title}
               className="w-full h-full object-cover"
             />

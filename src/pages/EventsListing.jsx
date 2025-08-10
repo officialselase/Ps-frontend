@@ -87,7 +87,7 @@ const EventsListing = () => {
                   {event.image && (
                     <div className="w-full h-48 overflow-hidden">
                       <img
-                        src={`${BASE_API_URL}${event.image}`}
+                        src={`${event.image}`}
                         alt={event.title}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />

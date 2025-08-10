@@ -360,7 +360,7 @@ const Homepage = () => {
               >
                 {post.image && (
                   <img
-                    src={`${BASE_API_URL}${post.image}`} // Corrected image path for Django media
+                    src={`${post.image}`} // Corrected image path for Django media
                     alt={post.title}
                     className="w-full h-48 object-cover"
                   />
@@ -417,7 +417,7 @@ const Homepage = () => {
               >
                 {event.image && (
                   <img
-                    src={`${BASE_API_URL}${event.image}`} // Corrected image path for Django media
+                    src={`${event.image}`} // Corrected image path for Django media
                     alt={event.title}
                     className="w-full h-48 object-cover"
                   />

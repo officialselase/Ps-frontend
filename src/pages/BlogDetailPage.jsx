@@ -93,7 +93,7 @@ const BlogDetailPage = () => {
             <img
               src={
                 blogPost.image
-                  ? `${BASE_API_URL.replace(/\/$/, "")}${blogPost.image}`
+                  ? `${blogPost.image}`
                   : "/placeholder-blog.jpg"
               }
               alt={blogPost.title}

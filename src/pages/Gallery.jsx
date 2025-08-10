@@ -94,7 +94,7 @@ const Gallery = () => {
   const slides = useMemo(
     () =>
       filteredAndSortedItems.map((item) => ({
-        src: `${BASE_API_URL}${item.image}`,
+        src: `${item.image}`,
         alt: item.title || item.description || "Gallery image",
         title: item.title, // Pass title for caption
         description: item.description, // Pass description for caption
