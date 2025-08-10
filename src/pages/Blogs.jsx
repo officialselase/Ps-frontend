@@ -181,7 +181,7 @@ const Blogs = () => {
                       <img
                         src={
                           post.image
-                            ? `${API_ROOT}${post.image}`
+                            ? `${post.image}`
                             : "/placeholder-blog.jpg"
                         }
                         alt={post.title}
