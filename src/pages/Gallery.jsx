@@ -247,6 +247,7 @@ const Gallery = () => {
                             )
                           )
                         }
+                        
                       >
                         {item.image && (
                           <div className="w-full h-64 overflow-hidden">
