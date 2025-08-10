@@ -90,7 +90,7 @@ const Resources = () => {
               {resources.map((resource) => (
                 <a
                   key={resource.id}
-                  href={resource.file ? `${BASE_API_URL}${resource.file}` : "#"}
+                  href={resource.file ? `${resource.file}` : "#"}
                   target={resource.file ? "_blank" : undefined}
                   rel={resource.file ? "noopener noreferrer" : undefined}
                   onClick={(e) => {
