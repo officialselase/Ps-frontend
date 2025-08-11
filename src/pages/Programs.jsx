@@ -17,13 +17,16 @@ const Programs = () => {
       title: "Community Outreach Programs",
       icon: <HeartHandshake size={60} className="text-[#ffd700] mb-4" />,
       description:
-        "Our Community Outreach Programs are designed to bring essential oral health education and services directly to underserved populations. We conduct mobile clinics, school programs, and community workshops to ensure everyone has access to foundational dental care and knowledge.",
+        "At Pleroma Springs Foundation, our work begins where the need is greatest within the heart of underserved communities. Our community outreach programs are the core of our mission to promote oral health equity. We take dental education, preventive care, and essential hygiene tools directly to schools, churches, and local gathering points where access to dental care is often limited or nonexistent. Through these outreaches, we:",
       activities: [
-        "Free dental screenings and basic treatments.",
-        "Oral hygiene workshops for children and adults.",
-        "Distribution of toothbrushes, toothpaste, and educational materials.",
-        "Referrals to advanced care facilities when necessary.",
+        "Educate children and families on the importance of oral hygiene.",
+        "Demonstrate proper brushing and flossing techniques",
+        "Distribute free dental care kits (toothbrushes and toothpaste).",
+        "Conduct basic screenings to identify oral health issues early.",
+        "Refer individuals to our facility when needed",
       ],
+      conclusion:
+        "Each outreach is designed not just as a one-time event, but as a spark for long-term behavior change. We work closely with local leaders, caregivers, and teachers to ensure that the message of oral health continues beyond our visits.",
       image: "/community.jpg", // Placeholder: Add a relevant image to public folder
       bgImage: "/secbg1.jpg", // Corrected image name if it was a typo, ensure it exists in public folder
       ctaLink: "/contact#volunteer",
@@ -34,13 +37,15 @@ const Programs = () => {
       title: "Professional Training & Capacity Building",
       icon: <BookOpen size={60} className="text-[#ffd700] mb-4" />,
       description:
-        "We empower local healthcare ecosystems by providing advanced training and resources to dental professionals, nurses, and community health workers. Our goal is to build sustainable capacity for oral healthcare delivery within communities.",
+        "At Pleroma Springs Foundation, we understand that lasting change happens when knowledge is shared and local capacity is strengthened. While our current focus is on delivering basic dental education and care through community outreach, we are working toward expanding our impact by supporting the people who can continue this work within their own communities. We aim to:",
       activities: [
-        "Workshops on modern dental techniques and equipment.",
-        "Training in community-based oral health interventions.",
-        "Mentorship programs for emerging dental practitioners.",
-        "Donation of essential dental tools and technology to local clinics.",
+        "Equip teachers, caregivers, and volunteers with basic oral health knowledge.",
+        "Develop simple training tools for use in schools and churches.",
+        "Encourage peer-to-peer education within communities.",
+        "Lay the foundation for community-based oral health advocates.",
       ],
+      conclusion:
+        "Though we are in the early stages of this journey, we are committed to building a strong network of local champions who will carry forward the message of preventive dental care and healthy habits. Our dream is to see communities empowered, not just served so that oral health becomes a shared responsibility and a sustainable priority.",
       image: "/teaching.webp", // Placeholder: Add a relevant image to public folder
       bgImage: "/484973030_17893927428191299_2052318637217163067_n.webp", // Corrected image name if it was a typo, ensure it exists in public folder
       ctaLink: "/contact#partner",
@@ -51,12 +56,12 @@ const Programs = () => {
       title: "Research & Innovation",
       icon: <Users size={60} className="text-[#ffd700] mb-4" />,
       description:
-        "Pleroma Springs Foundation invests in cutting-edge research to identify new methods, technologies, and insights that can revolutionize oral health prevention and treatment, especially for challenging global health issues.",
+        "We believe that real solutions start with real understanding. While our primary work currently centers on community outreach and preventive care, we recognize that ongoing research and innovation are essential to creating long-term, scalable impact in oral health. We are laying the groundwork to:",
       activities: [
-        "Epidemiological studies on oral diseases in target regions.",
-        "Development of cost-effective, sustainable oral health solutions.",
-        "Evaluation of program effectiveness and impact.",
-        "Collaboration with academic institutions and research centers.",
+        "Gather insights from our outreach programs to better understand the oral health challenges faced by underserved communities.",
+        "Identify gaps in access, knowledge, and behavior that affect oral hygiene practices.",
+        "Explore low-cost, culturally appropriate solutions that can improve dental education and care delivery.",
+        "Use data to shape future programs and advocate for policy-level attention to oral health equity.",
       ],
       image: "/research.jpg", // Placeholder: Add a relevant image to public folder
       bgImage: "/secbg2.webp", // Placeholder: Add a relevant image to public folder
@@ -68,12 +73,13 @@ const Programs = () => {
       title: "Advocacy & Policy Influence",
       icon: <Globe size={60} className="text-[#ffd700] mb-4" />,
       description:
-        "We work alongside governments, NGOs, and international bodies to champion policies that prioritize oral health within broader public health agendas. Our advocacy aims to create systemic changes that ensure long-term oral health equity for all.",
+        "We advocate for stronger recognition of oral health at all levels. Our focus includes:",
       activities: [
-        "Policy briefs and recommendations to decision-makers.",
-        "Participation in national and international health forums.",
-        "Raising awareness about the importance of oral health at a policy level.",
-        "Building coalitions for unified advocacy efforts.",
+        "Raising awareness in schools and communities about oral health as a basic need.",
+        "Promoting the link between oral health and overall well-being.",
+        "Encouraging inclusion of oral health in public health programs.",
+        "Engaging local leaders and stakeholders to support better access to care.",
+        "Supporting efforts toward policy change for sustainable dental health solutions",
       ],
       image: "/advocate.jpg", // Placeholder: Add a relevant image to public folder
       bgImage: "/program-advocacy-bg.jpg", // Placeholder: Add a relevant image to public folder
@@ -124,20 +130,95 @@ const Programs = () => {
       </section>
 
       {/* Programs Overview/Introduction Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-light text-teal-800 mb-6">
-            A Holistic Approach to Oral Health
-          </h2>
-          <p className="text-lg text-teal-700 leading-relaxed">
-            At Pleroma Springs Foundation, our programs are strategically
-            designed to address the multifaceted challenges in global oral
-            health. From direct community engagement to systemic policy changes,
-            we implement sustainable solutions that foster healthier smiles and
-            brighter futures for all. Each initiative is carefully planned and
-            executed with our partners to ensure maximum impact and long-term
-            benefits.
-          </p>
+      <section className="py-20 bg-teal">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-teal-800 mb-8">
+              A Holistic Approach to Oral Health
+            </h2>
+            <p className="text-lg leading-relaxed text-teal-700 mb-12">
+              At Pleroma Springs Foundation, we believe that oral health is not
+              a luxury—it's a vital part of overall well-being. For too many
+              communities, dental care remains out of reach, while oral diseases
+              silently cause pain, affect school performance, and create
+              long-term health complications. That's why we've committed
+              ourselves to a comprehensive, grassroots approach that brings
+              education, prevention, and care directly to the people who need it
+              most.
+            </p>
+          </div>
+
+          <div className="space-y-12 max-w-4xl mx-auto">
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-semibold text-teal-800 mb-4">
+                Education as the Foundation
+              </h3>
+              <p className="text-lg leading-relaxed text-teal-700">
+                Knowledge is our starting point. Through school and community
+                outreach programs, we teach children and families the importance
+                of daily oral hygiene, proper nutrition, and early detection of
+                dental issues. We transform complex dental information into
+                simple, practical steps that empower even the youngest child to
+                take charge of their oral health.
+              </p>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-semibold text-teal-800 mb-4">
+                Practical Prevention
+              </h3>
+              <p className="text-lg leading-relaxed text-teal-700">
+                Thanks to generous partnerships with Pepsodent Ghana and Colgate
+                Ghana, we provide essential tools like toothbrushes and
+                toothpaste during our outreaches. These resources enable
+                families to adopt better hygiene practices and prevent common
+                dental problems such as cavities and gum disease before they
+                become serious issues.
+              </p>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-semibold text-teal-800 mb-4">
+                Community-Focused Engagement
+              </h3>
+              <p className="text-lg leading-relaxed text-teal-700">
+                We meet communities where they are—both physically and socially.
+                Every outreach is tailored to the unique needs of the people we
+                serve, involving local schools, caregivers, and volunteers. By
+                working within existing community structures, we build trust,
+                ensure relevance, and create lasting impact that extends beyond
+                our visits.
+              </p>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-semibold text-teal-800 mb-4">
+                Connecting Oral and General Health
+              </h3>
+              <p className="text-lg leading-relaxed text-teal-700">
+                We emphasize the vital connection between oral health and
+                overall wellness. Our education highlights how untreated dental
+                issues can contribute to heart disease, diabetes, and pregnancy
+                complications, shifting the community mindset from viewing
+                problems as "just a toothache" to understanding oral health as
+                integral to full-body care.
+              </p>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-semibold text-teal-800 mb-4">
+                Laying the Groundwork for Sustainability
+              </h3>
+              <p className="text-lg leading-relaxed text-teal-700">
+                We're building strong foundations by developing relationships
+                with educators, churches, and local health promoters. We train
+                and encourage these community leaders to become advocates for
+                oral health, ensuring our mission continues and grows even after
+                our direct involvement, creating a sustainable network of oral
+                health champions.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -216,6 +297,17 @@ const Programs = () => {
                     <li key={idx}>{activity}</li>
                   ))}
                 </ul>
+
+                {/* Add conclusion text */}
+                {program.conclusion && (
+                  <p
+                    className={`text-lg leading-relaxed mb-8 ${
+                      program.bgImage ? "text-white/90" : "text-teal-700"
+                    }`}
+                  >
+                    {program.conclusion}
+                  </p>
+                )}
                 <Link
                   to={program.ctaLink}
                   className="inline-flex items-center bg-[#ffd700] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#ccaa00] transition-colors shadow-lg"

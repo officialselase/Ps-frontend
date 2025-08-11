@@ -24,14 +24,14 @@ const Homepage = () => {
     {
       title: "Empowering Global Oral Health",
       subtitle: "Innovative Solutions for Communities",
-      desc: "Pleroma Springs Foundation is dedicated to transforming oral health worldwide through sustainable initiatives and education.",
+      desc: "Pleroma Springs Foundation is committed to turning this vision into reality, one brush, one lesson and one smile at a time.",
       mission: "Building a healthier future, one smile at a time.",
       bg: "bg-[url('/hero1.jpeg')]", // Placeholder: Update with your specific PSF hero images
     },
     {
       title: "Our Commitment to Impact",
       subtitle: "Driving Change in Oral Wellness",
-      desc: "We work tirelessly with partners to deliver accessible, high-quality oral healthcare where it's needed most.",
+      desc: "We dream of a Ghana where no child misses school due to tooth pain, no mother fears infection due to untreated decay, and every person no matter their background, can smile with confidence.",
       mission:
         "Creating lasting legacies of well-being across diverse populations.",
       bg: "bg-[url('/Hero2.jpg')]", // Placeholder: Update with your specific PSF hero images
@@ -40,7 +40,8 @@ const Homepage = () => {
       title: "Join Our Global Mission",
       subtitle: "Be a Part of the Solution",
       desc: "Your involvement helps us expand our reach and deepen our impact in underserved communities.",
-      mission: "Together, we can achieve universal oral health equity.",
+      mission:
+        "At Pleroma Springs Foundation, our mission is to promote oral health equity by providing basic dental education, preventive care and essential hygiene tools to underserved communities. Ewe strive to empower individuals, especially children with the knowledge, resources and support they need to build healthy habits and brighter futures, one smile at a time.",
       bg: "bg-[url('/hero3.jpeg')]", // Placeholder: Update with your specific PSF hero images
     },
   ];
@@ -78,9 +79,7 @@ const Homepage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(
-          `${BASE_API_URL}/api/events/?limit=3`
-        );
+        const response = await axios.get(`${BASE_API_URL}/api/events/?limit=3`);
         const fetchedEvents = response.data.results || response.data;
         const sortedEvents = fetchedEvents.sort(
           (a, b) => new Date(a.event_date) - new Date(b.event_date)
@@ -111,28 +110,28 @@ const Homepage = () => {
       icon: <HeartHandshake size={48} className="text-[#ffd700] mb-4" />,
       title: "Community Outreach Programs",
       description:
-        "Providing direct oral health education and services to underserved areas.",
+        "Building bridges to better health through direct education and preventive care, creating foundations for communities to take ownership of their oral wellness.",
       link: "/programs#outreach",
     },
     {
       icon: <BookOpen size={48} className="text-[#ffd700] mb-4" />,
       title: "Professional Training & Capacity Building",
       description:
-        "Equipping local healthcare providers with advanced skills and knowledge.",
+        "Empowering local champions with the knowledge and tools to create lasting change in their communities through peer-to-peer education and sustainable oral health advocacy.",
       link: "/programs#training",
     },
     {
       icon: <Users size={48} className="text-[#ffd700] mb-4" />,
       title: "Research & Innovation",
       description:
-        "Driving forward-thinking research to develop new oral health solutions.",
+        "Transforming insights into action by developing culturally appropriate, low-cost solutions that address real barriers to oral health in underserved communities.",
       link: "/programs#research",
     },
     {
       icon: <Globe size={48} className="text-[#ffd700] mb-4" />,
       title: "Advocacy & Policy Influence",
       description:
-        "Working with governments and organizations to shape supportive oral health policies.",
+        "Championing oral health as a fundamental right by engaging leaders, shaping conversations, and driving systemic change that makes quality care accessible to all.",
       link: "/programs#advocacy",
     },
   ];

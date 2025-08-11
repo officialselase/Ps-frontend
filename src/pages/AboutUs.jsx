@@ -108,18 +108,29 @@ const AboutUs = () => {
                 The Story Behind Our Mission
               </h2>
               <p className="text-lg text-teal-700 leading-relaxed mb-6">
-                Pleroma Springs Foundation was born from a deep-seated belief
-                that everyone deserves access to quality oral healthcare,
-                regardless of their location or economic status. Our journey
-                began with a small team driven by a singular vision: to bridge
-                the gap in oral health disparities globally.
+                Every great mission begins with a moment of realization and ours
+                began in the heart of a rural community where dental care was
+                seen as a luxury, not a necessity. What we witnessed wasn’t just
+                toothaches and untreated infections. It was children missing
+                school because of dental pain, adults suffering in silence, and
+                communities living with the belief that oral health was out of
+                reach. In that moment, we knew we couldn’t just sit by. We had
+                to act. That experience gave birth to our foundation. Built on
+                compassion, knowledge, and a firm belief that access to basic
+                dental care is a human right, not a privilege. We made it our
+                mission to reach the underserved.
               </p>
               <p className="text-lg text-teal-700 leading-relaxed mb-8">
-                From humble beginnings, providing basic dental education and
-                supplies in local communities, we have grown into an
-                international organization. Our growth is fueled by unwavering
-                dedication, the support of our incredible partners, and the
-                tangible positive impact we see in the lives of those we serve.
+                We began by listening, learning from the people whose smiles we
+                hoped to protect. From there, we set out to provide more than
+                treatment. We deliver education that empowers, preventive care
+                that protects, and treatment that heals especially in places
+                where dental services are scarce or non-existent. Today, we
+                carry that same passion and purpose into every school we visit,
+                every outreach we organize, and every smile we restore. Our
+                foundation is not just about teeth; it's about dignity,
+                confidence, and equal opportunity to thrive starting with a
+                healthy smile. This is our story. This is our why.
               </p>
               <Link
                 to="/impact"
@@ -172,10 +183,9 @@ const AboutUs = () => {
                 Our Mission
               </h3>
               <p className="text-teal-700 leading-relaxed">
-                To transform global oral health by fostering innovative
-                education, establishing strategic partnerships, and ensuring
-                sustainable access to care for all, with a special focus on
-                underserved regions.
+                Provide accessible, compassionate, and comprehensive dental care
+                to underserved communities, promoting oral health awareness and
+                improving the overall well-being of individuals in need.
               </p>
             </motion.div>
 
@@ -204,9 +214,10 @@ const AboutUs = () => {
                 Our Vision
               </h3>
               <p className="text-teal-700 leading-relaxed">
-                A world where every individual, especially those in underserved
-                communities, enjoys optimal oral health, contributing to overall
-                well-being and improved quality of life.
+                To be a leading dental charity organization, empowering
+                communities through education, treatment, and advocacy, and
+                bridging the gap in oral healthcare access for a healthier,
+                brighter future.
               </p>
             </motion.div>
 
@@ -269,14 +280,14 @@ const AboutUs = () => {
                   onClick={() => openTeamMemberModal(member)} // NEW: Click handler
                 >
                   <img
-    src={
-    member.profile_picture
-      ? `${member.profile_picture}`
-      : "/placeholder-avatar.jpg"
-  }
-  alt={member.name}
-  className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-white shadow-md"
-/>
+                    src={
+                      member.profile_picture
+                        ? `${member.profile_picture}`
+                        : "/placeholder-avatar.jpg"
+                    }
+                    alt={member.name}
+                    className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-white shadow-md"
+                  />
 
                   <h3 className="text-xl font-semibold text-teal-800 mb-1">
                     {member.name}
